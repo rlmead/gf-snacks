@@ -1,8 +1,14 @@
+import React from "react";
+import Footer from "./components/Footer";
+
 function App() {
   return (
-    <p>
-      Let's make some gluten-free snacks.
-    </p>
+    <>
+      <p>
+        Let's make some gluten-free snacks.
+      </p>
+      <Footer />
+    </>
   );
 }
 
