@@ -1,15 +1,15 @@
 import React from "react";
-import { Navbar, Nav, NavItem } from "reactstrap";
+import { Navbar, Nav } from "reactstrap";
 
 function Footer() {
   return (
     <Navbar
-      className="fixed-bottom text-light bg-success">
+      className="fixed-bottom bg-success">
       <Nav
         className="mx-auto">
-        <NavItem>
+        <p className="mb-auto">
           These recipes are only ok. <a className="text-light" href="#"><u>Get the good stuff here.</u></a>
-        </NavItem>
+        </p>
       </Nav>
     </Navbar>
 
