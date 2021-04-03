@@ -4,10 +4,12 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <p>
-        Let's make some gluten-free snacks.
+      <div className="bg-gradient">
+        <p className="mb-5">
+          Let's make some gluten-free snacks.
       </p>
       <Footer />
+      </div>
     </>
   );
 }
