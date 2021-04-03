@@ -6,7 +6,7 @@ function Header() {
     <Navbar
       className="sticky-top text-light">
       <Nav>
-        <h1>Gluten-free snack recipes</h1>
+        <h1>Random gluten-free snack recipe generator</h1>
       </Nav>
     </Navbar>
 
