@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div class="bg-gradient" class="text-light">
+    <div className="bg-gradient text-light">
       <Header />
       <Recipe />
       <Footer />
