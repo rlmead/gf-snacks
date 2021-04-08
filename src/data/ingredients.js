@@ -1,9 +1,8 @@
-const ingredients = {
+const allIngredients = {
   "base": {
     "dry": [
       {
         "food": "1/2 scoop of protein powder",
-        // protein powder has no wet measurement! do a special thing to make sure this ingredient is only selected with dice roll 2, and omit wet ingredient
         "instructions": [
           "Combine all ingredients in a medium-sized bowl.",
           "Use a fork or a very small, sturdy mini bar whisk to mix them all together."
@@ -22,7 +21,6 @@ const ingredients = {
       {
         "food": "1/3 cup gluten-free flour blend",
         "wet-measurement": "1/3 cup",
-        // special: extras! add those in if they're there
         "extras": [
           "1 tablespoon melted butter",
           "1/2 teaspoon baking powder"
@@ -120,4 +118,4 @@ const ingredients = {
   }
 }
 
-export default ingredients;
+export default allIngredients;
