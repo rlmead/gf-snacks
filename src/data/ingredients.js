@@ -50,8 +50,15 @@ const allIngredients = {
     ]
   },
   "flavors": {
-    "sauce": {
-      "savory": [
+    "savory": {
+      "sprinkle": [
+        "kosher salt",
+        "flaky salt (such as Maldonado)",
+        "ground cayenne pepper",
+        "freshly ground black pepper",
+        "red pepper flakes"
+      ],
+      "sauce": [
         "toasted sesame oil",
         "coconut aminos",
         "liquid aminos",
@@ -61,40 +68,10 @@ const allIngredients = {
         "gluten free oyster sauce",
         "worcestershire sauce",
         "good chicken broth"
-      ],
-      "sweet": [
-        "vanilla extract",
-        "almond extract",
-        "lemon extract",
-        "hazelnut extract",
-        "lemon juice",
-        "maple syrup",
-        "honey",
-        "sweet sorghum syrup",
-        "agave",
-        "jam, jelly or marmalade",
-        "icing",
-        "grand marnier",
-        "cointreau",
-        "cherry liqueur",
-        "peanut liqueur",
-        "pecan liqueur",
-        "amaretto",
-        "Nocino",
-        "Frangelico",
-        "Kahlua",
-        "Creme de cassis"
       ]
     },
-    "sprinkle": {
-      "savory": [
-        "kosher salt",
-        "flaky salt (such as Maldonado)",
-        "ground cayenne pepper",
-        "freshly ground black pepper",
-        "red pepper flakes"
-      ],
-      "sweet": [
+    "sweet": {
+      "sprinkle": [
         "lemon zest",
         "confectioner's sugar",
         "demerara sugar",
@@ -111,6 +88,29 @@ const allIngredients = {
         "ground ginger",
         "ground nutmeg",
         "ground cardamom"
+      ],
+      "sauce": [
+        "vanilla extract",
+        "almond extract",
+        "lemon extract",
+        "hazelnut extract",
+        "lemon juice",
+        "maple syrup",
+        "honey",
+        "sweet sorghum syrup",
+        "agave",
+        "jam, jelly or marmalade",
+        "icing",
+        "Grand Marnier",
+        "Cointreau",
+        "cherry liqueur",
+        "peanut liqueur",
+        "pecan liqueur",
+        "Amaretto",
+        "Nocino",
+        "Frangelico",
+        "Kahlua",
+        "Creme de cassis"
       ]
     }
   }
