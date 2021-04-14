@@ -4,15 +4,14 @@ const allIngredients = {
       {
         "food": "1/2 scoop of protein powder",
         "instructions": [
-          "Combine all ingredients in a medium-sized bowl.",
           "Use a fork or a very small, sturdy mini bar whisk to mix them all together."
         ]
       },
       {
-        "food": "1/4 cup sweet rice flour (aka mochi flour)",
+        "food": "1/4 cup mochi flour",
         "wet-measurement": "1/4 cup",
         "instructions": [
-          "Combine all ingredients in a microwave-safe bowl and stir together until smooth.",
+          "Stir together until smooth.",
           "Cover the bowl and microwave at full strength for about 50 seconds. Microwaves differ, so you may need to adjust these times. You are looking for the microwave to transform the chalky looking raw mixture to a smooth, semi-translucent paste.",
           "Use a potholder to remove the bowl from the microwave. Expect it to be HOT.",
           "With a spoon or knife, slice through the paste both vertically and horizontally several times, as if cutting brownies after baking. This step simply makes eating the stretchy, chewy treat a bit easier."
@@ -26,7 +25,6 @@ const allIngredients = {
           "1/2 teaspoon baking powder"
         ],
         "instructions": [
-          "Mix all ingredients in a heavy, large, microwaveable mug or bowl.",
           "Stir with a fork, spoon or mini bar whisk until the dough is completely and thoroughly mixed.",
           "Put in the microwave and cover it.",
           "Lower the power of your microwave by at least 20 percent.",
@@ -46,7 +44,7 @@ const allIngredients = {
       "hazelnut butter",
       "pecan butter",
       "almond butter",
-      "frozen shelled soybeans (aka edamame)",
+      "edamame",
       "toasted walnuts",
       "toasted pecans"
     ]
@@ -82,8 +80,8 @@ const allIngredients = {
         "peanut liqueur",
         "pecan liqueur",
         "amaretto",
-        "walnut liqueur (aka Nocino)",
-        "hazelnut liqueur (aka Frangelico)",
+        "Nocino",
+        "Frangelico",
         "Kahlua",
         "Creme de cassis"
       ]
