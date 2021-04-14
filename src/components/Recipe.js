@@ -6,7 +6,7 @@ function Recipe() {
   let mainIngredients = [];
   let dryIngredient = "";
   let instructions = [];
-  let flavorPalette = "";
+  let flavorChoices = [];
   let toppings = [];
 
   // roll a few dice to decide what subsets of ingredients to randomly select
@@ -32,10 +32,10 @@ function Recipe() {
         output = inputArray[0] + " and " + inputArray[1];
         break;
       default:
-        for (let i = 0; i < inputArray.length-1; i++) {
+        for (let i = 0; i < inputArray.length - 1; i++) {
           output = output + inputArray[i] + ", ";
         }
-        output += "and " + inputArray[inputArray.length-1];
+        output += "and " + inputArray[inputArray.length - 1];
     }
     return output;
   }
@@ -84,23 +84,45 @@ function Recipe() {
   // flavor palette:
   switch (Math.ceil(Math.random() * 3)) {
     case 1:
-      flavorPalette = "savory";
+      flavorChoices = allIngredients["flavors"]["savory"];
       break;
     case 2:
-      flavorPalette = "sweet";
+      flavorChoices = allIngredients["flavors"]["sweet"];
       break;
     case 3:
-      flavorPalette = "adventurous";
+      flavorChoices = allIngredients["flavors"]["sweet"];
+      flavorChoices["sprinkle"] = flavorChoices["sprinkle"].concat(allIngredients["flavors"]["savory"]["sprinkle"]);
+      flavorChoices["sauce"] = flavorChoices["sauce"].concat(allIngredients["flavors"]["savory"]["sauce"]);
       break;
   }
 
   // flavor ingredient combination:
-  // 1: 1 sauce!
-  // 2: 1 sauce + 1 sprinkle!!
-  // 3: 1 sauce + 2 sprinkles!!!
-  // 4: 2 sauces!!!!
-  // 5: 2 sauces + 1 sprinkle!!!!!
-  // 6: 2 sauces + 2 sprinkles!!!!!!
+  switch (Math.ceil(Math.random() * 3)) {
+    // 1: 1 sauce!
+    case 1:
+      toppings = randomSubset(flavorChoices["sauce"], 1);
+      break;
+    // 2: 1 sauce + 1 sprinkle!!
+    case 2:
+      toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 1));
+      break;
+    // 3: 1 sauce + 2 sprinkles!!!
+    case 3:
+      toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 2));
+      break;
+    // 4: 2 sauces!!!!
+    case 4:
+      toppings = randomSubset(flavorChoices["sauce"], 2);
+      break;
+    // 5: 2 sauces + 1 sprinkle!!!!!
+    case 5:
+      toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 1));
+      break;
+    // 6: 2 sauces + 2 sprinkles!!!!!!
+    case 6:
+      toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 2));
+      break;
+  }
 
   return (
     <div>
@@ -114,7 +136,7 @@ function Recipe() {
               <h4>Ingredients</h4>
               <ul>
                 {
-                  mainIngredients.map((item, index) => {
+                  mainIngredients.concat(toppings).map((item, index) => {
                     return (
                       <li key={index}>{item}</li>
                     )
@@ -123,7 +145,7 @@ function Recipe() {
               </ul>
               <h4>Instructions</h4>
               <ol>
-              <li>Combine {verbalizeArray(mainIngredients)} in a medium-sized bowl.</li>
+                <li>Combine {verbalizeArray(mainIngredients)} in a medium-sized bowl.</li>
                 {
                   instructions.map((item, index) => {
                     return (
@@ -131,7 +153,7 @@ function Recipe() {
                     )
                   })
                 }
-                {/* <li>Top with {verbalizeArray(toppings)}.</li> */}
+                <li>Top with {verbalizeArray(toppings)}.</li>
                 <li>Eat and savor.</li>
               </ol>
             </Col>
