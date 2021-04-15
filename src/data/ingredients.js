@@ -52,8 +52,7 @@ const allIngredients = {
   "flavors": {
     "savory": {
       "sprinkle": [
-        "kosher salt",
-        "flaky salt (such as Maldonado)",
+        "flaky salt",
         "ground cayenne pepper",
         "freshly ground black pepper",
         "red pepper flakes"
