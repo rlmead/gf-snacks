@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Jumbotron, Button, Container, Row, Col } from "reactstrap";
 import allIngredients from "../data/ingredients";
 
@@ -8,6 +8,9 @@ function Recipe() {
   let instructions = [];
   let flavorChoices = [];
   let toppings = [];
+  const [instDisplay, setInstDisplay] = useState([]);
+  const [mainDisplay, setMainDisplay] = useState([]);
+  const [topDisplay, setTopDisplay] = useState([]);
 
   // roll a few dice to decide what subsets of ingredients to randomly select
 
@@ -40,89 +43,102 @@ function Recipe() {
     return output;
   }
 
-  // base ingredient combination:
-  switch (Math.ceil(Math.random() * 5)) {
-    case 1:
-      // 1: dry ingredient + wet ingredient
-      dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-      while (dryIngredient["food"] == "1/2 scoop of protein powder") {
+  function generateRecipe() {
+    // base ingredient combination:
+    switch (Math.ceil(Math.random() * 5)) {
+      case 1:
+        // 1: dry ingredient + wet ingredient
         dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-      }
-      mainIngredients.push(dryIngredient["food"]);
-      mainIngredients.push(dryIngredient["wet-measurement"] + " " + allIngredients["base"]["wet"][Math.floor(Math.random() * allIngredients["base"]["wet"].length)]);
-      break;
-    case 2:
-      // 2: dry ingredient + wet ingredient + protein
-      dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-      mainIngredients.push(dryIngredient["food"]);
-      if (dryIngredient["wet-measurement"]) {
+        while (dryIngredient["food"] == "1/2 scoop of protein powder") {
+          dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
+        }
+        mainIngredients.push(dryIngredient["food"]);
         mainIngredients.push(dryIngredient["wet-measurement"] + " " + allIngredients["base"]["wet"][Math.floor(Math.random() * allIngredients["base"]["wet"].length)]);
-      }
-      mainIngredients.push(allIngredients["base"]["protein"][Math.floor(Math.random() * allIngredients["base"]["protein"].length)]);
-      break;
-    case 3:
-      // 3: three proteins!
-      mainIngredients = randomSubset(allIngredients["base"]["protein"], 3);
-      break;
-    default:
-      // 4-5: two proteins
-      mainIngredients = randomSubset(allIngredients["base"]["protein"], 2);
-      break;
-  }
-
-  if (dryIngredient) {
-    instructions = dryIngredient["instructions"];
-    if (dryIngredient["extras"]) {
-      mainIngredients = mainIngredients.concat(dryIngredient["extras"]);
+        break;
+      case 2:
+        // 2: dry ingredient + wet ingredient + protein
+        dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
+        mainIngredients.push(dryIngredient["food"]);
+        if (dryIngredient["wet-measurement"]) {
+          mainIngredients.push(dryIngredient["wet-measurement"] + " " + allIngredients["base"]["wet"][Math.floor(Math.random() * allIngredients["base"]["wet"].length)]);
+        }
+        mainIngredients.push(allIngredients["base"]["protein"][Math.floor(Math.random() * allIngredients["base"]["protein"].length)]);
+        break;
+      case 3:
+        // 3: three proteins!
+        mainIngredients = randomSubset(allIngredients["base"]["protein"], 3);
+        break;
+      default:
+        // 4-5: two proteins
+        mainIngredients = randomSubset(allIngredients["base"]["protein"], 2);
+        break;
     }
-  } else if (!dryIngredient) {
-    instructions = [
-      "Use a fork to mix ingredients together."
-    ]
+
+    if (dryIngredient) {
+      instructions = dryIngredient["instructions"];
+      if (dryIngredient["extras"]) {
+        mainIngredients = mainIngredients.concat(dryIngredient["extras"]);
+      }
+    } else if (!dryIngredient) {
+      instructions = [
+        "Use a fork to mix ingredients together."
+      ]
+    }
+
+    // flavor palette:
+    switch (Math.ceil(Math.random() * 3)) {
+      case 1:
+        flavorChoices = allIngredients["flavors"]["savory"];
+        break;
+      case 2:
+        flavorChoices = allIngredients["flavors"]["sweet"];
+        break;
+      case 3:
+        flavorChoices = allIngredients["flavors"]["sweet"];
+        flavorChoices["sprinkle"] = flavorChoices["sprinkle"].concat(allIngredients["flavors"]["savory"]["sprinkle"]);
+        flavorChoices["sauce"] = flavorChoices["sauce"].concat(allIngredients["flavors"]["savory"]["sauce"]);
+        break;
+    }
+
+    // flavor ingredient combination:
+    switch (Math.ceil(Math.random() * 3)) {
+      // 1: 1 sauce!
+      case 1:
+        toppings = randomSubset(flavorChoices["sauce"], 1);
+        break;
+      // 2: 1 sauce + 1 sprinkle!!
+      case 2:
+        toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 1));
+        break;
+      // 3: 1 sauce + 2 sprinkles!!!
+      case 3:
+        toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 2));
+        break;
+      // 4: 2 sauces!!!!
+      case 4:
+        toppings = randomSubset(flavorChoices["sauce"], 2);
+        break;
+      // 5: 2 sauces + 1 sprinkle!!!!!
+      case 5:
+        toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 1));
+        break;
+      // 6: 2 sauces + 2 sprinkles!!!!!!
+      case 6:
+        toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 2));
+        break;
+    }
+  }
+  
+  function newRecipe() {
+    generateRecipe();
+    setInstDisplay(instructions);
+    setMainDisplay(mainIngredients);
+    setTopDisplay(toppings);
   }
 
-  // flavor palette:
-  switch (Math.ceil(Math.random() * 3)) {
-    case 1:
-      flavorChoices = allIngredients["flavors"]["savory"];
-      break;
-    case 2:
-      flavorChoices = allIngredients["flavors"]["sweet"];
-      break;
-    case 3:
-      flavorChoices = allIngredients["flavors"]["sweet"];
-      flavorChoices["sprinkle"] = flavorChoices["sprinkle"].concat(allIngredients["flavors"]["savory"]["sprinkle"]);
-      flavorChoices["sauce"] = flavorChoices["sauce"].concat(allIngredients["flavors"]["savory"]["sauce"]);
-      break;
-  }
-
-  // flavor ingredient combination:
-  switch (Math.ceil(Math.random() * 3)) {
-    // 1: 1 sauce!
-    case 1:
-      toppings = randomSubset(flavorChoices["sauce"], 1);
-      break;
-    // 2: 1 sauce + 1 sprinkle!!
-    case 2:
-      toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 1));
-      break;
-    // 3: 1 sauce + 2 sprinkles!!!
-    case 3:
-      toppings = randomSubset(flavorChoices["sauce"], 1).concat(randomSubset(flavorChoices["sprinkle"], 2));
-      break;
-    // 4: 2 sauces!!!!
-    case 4:
-      toppings = randomSubset(flavorChoices["sauce"], 2);
-      break;
-    // 5: 2 sauces + 1 sprinkle!!!!!
-    case 5:
-      toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 1));
-      break;
-    // 6: 2 sauces + 2 sprinkles!!!!!!
-    case 6:
-      toppings = randomSubset(flavorChoices["sauce"], 2).concat(randomSubset(flavorChoices["sprinkle"], 2));
-      break;
-  }
+  useEffect(() => {
+    newRecipe();
+  }, [])
 
   return (
     <div>
@@ -130,13 +146,13 @@ function Recipe() {
         <Container>
           <Row>
             <Col sm="3">
-              <Button color="primary">New recipe</Button>
+              <Button color="primary" onClick={newRecipe}>New recipe</Button>
             </Col>
             <Col sm="9">
               <h4>Ingredients</h4>
               <ul>
                 {
-                  mainIngredients.concat(toppings).map((item, index) => {
+                  mainDisplay.concat(topDisplay).map((item, index) => {
                     return (
                       <li key={index}>{item}</li>
                     )
@@ -145,15 +161,15 @@ function Recipe() {
               </ul>
               <h4>Instructions</h4>
               <ol>
-                <li>Combine {verbalizeArray(mainIngredients)} in a medium-sized bowl.</li>
+                <li>Combine {verbalizeArray(mainDisplay)} in a medium-sized bowl.</li>
                 {
-                  instructions.map((item, index) => {
+                  instDisplay.map((item, index) => {
                     return (
                       <li key={index}>{item}</li>
                     )
                   })
                 }
-                <li>Top with {verbalizeArray(toppings)}.</li>
+                <li>Top with {verbalizeArray(topDisplay)}.</li>
                 <li>Eat and savor.</li>
               </ol>
             </Col>
