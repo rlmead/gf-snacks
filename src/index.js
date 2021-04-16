@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import './theme_1618600266312.css'
 
 ReactDOM.render(
   <React.StrictMode>

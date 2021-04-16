@@ -4,7 +4,7 @@ import { Navbar, Nav } from "reactstrap";
 function Footer() {
   return (
     <Navbar
-      className="fixed-bottom bg-success">
+      className="fixed-bottom bg-success text-light">
       <Nav
         className="mx-auto">
         <p className="mb-auto">

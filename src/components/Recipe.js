@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Jumbotron, Button, Container, Row, Col } from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 import allIngredients from "../data/ingredients";
 
 function Recipe() {
@@ -128,7 +128,7 @@ function Recipe() {
         break;
     }
   }
-  
+
   function newRecipe() {
     generateRecipe();
     setInstDisplay(instructions);
@@ -141,41 +141,43 @@ function Recipe() {
   }, [])
 
   return (
-    <div>
-      <Jumbotron className="bg-transparent">
-        <Container>
-          <Row>
-            <Col sm="3">
-              <Button color="primary" onClick={newRecipe}>New recipe</Button>
-            </Col>
-            <Col sm="9">
-              <h4>Ingredients</h4>
-              <ul>
-                {
-                  mainDisplay.concat(topDisplay).map((item, index) => {
-                    return (
-                      <li key={index}>{item}</li>
-                    )
-                  })
-                }
-              </ul>
-              <h4>Instructions</h4>
-              <ol>
-                <li>Combine {verbalizeArray(mainDisplay)} in a medium-sized bowl.</li>
-                {
-                  instDisplay.map((item, index) => {
-                    return (
-                      <li key={index}>{item}</li>
-                    )
-                  })
-                }
-                <li>Top with {verbalizeArray(topDisplay)}.</li>
-                <li>Eat and savor.</li>
-              </ol>
-            </Col>
-          </Row>
-        </Container>
-      </Jumbotron>
+    <div className="mb-5">
+      <Container className="text-dark pb-5 mt-5 mb-5">
+        <Row className="bg-info rounded shadow p-3 mb-5">
+          <Col sm="4">
+            <h4>Ingredients</h4>
+            <ul>
+              {
+                mainDisplay.concat(topDisplay).map((item, index) => {
+                  return (
+                    <li key={index}>{item}</li>
+                  )
+                })
+              }
+            </ul>
+          </Col>
+          <Col sm="8">
+            <h4>Instructions</h4>
+            <ol>
+              <li>Combine {verbalizeArray(mainDisplay)} in a medium-sized bowl.</li>
+              {
+                instDisplay.map((item, index) => {
+                  return (
+                    <li key={index}>{item}</li>
+                  )
+                })
+              }
+              <li>Top with {verbalizeArray(topDisplay)}.</li>
+              <li>Eat and savor.</li>
+            </ol>
+          </Col>
+        </Row>
+        <Row className="fixed-bottom mb-5">
+          <Col className="text-center">
+            <Button color="warning" className="shadow" onClick={newRecipe}>Try another recipe</Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
