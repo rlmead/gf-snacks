@@ -172,7 +172,7 @@ function Recipe() {
             </ol>
           </Col>
         </Row>
-        <Row className="fixed-bottom mb-5">
+        <Row className="fixed-bottom p-4 mb-5">
           <Col className="text-center">
             <Button color="warning" className="shadow" onClick={newRecipe}>Try another recipe</Button>
           </Col>
