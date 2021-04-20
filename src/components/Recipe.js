@@ -147,7 +147,7 @@ function Recipe() {
         </Row>
         <Row className="fixed-bottom p-4 mb-5">
           <Col className="text-center">
-            <Button color="warning" className="shadow" onClick={newRecipe}>Try another recipe</Button>
+            <Button color="danger" className="shadow" onClick={newRecipe}>Try another recipe</Button>
           </Col>
         </Row>
       </Container>
