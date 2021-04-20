@@ -4,7 +4,7 @@ import allIngredients from "../data/ingredients";
 
 function Recipe() {
   let mainIngredients = [];
-  let dryIngredient = "";
+  let starch = "";
   let instructions = [];
   let flavorChoices = [];
   let toppings = [];
@@ -45,44 +45,17 @@ function Recipe() {
 
   function generateRecipe() {
     // base ingredient combination:
-    switch (Math.ceil(Math.random() * 5)) {
+    switch (Math.ceil(Math.random() * 2)) {
       case 1:
-        // 1: dry ingredient + wet ingredient
-        dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-        while (dryIngredient["food"] == "1/2 scoop of protein powder") {
-          dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-        }
-        mainIngredients.push(dryIngredient["food"]);
-        mainIngredients.push(dryIngredient["wet-measurement"] + " " + allIngredients["base"]["wet"][Math.floor(Math.random() * allIngredients["base"]["wet"].length)]);
-        break;
-      case 2:
-        // 2: dry ingredient + wet ingredient + protein
-        dryIngredient = allIngredients["base"]["dry"][Math.floor(Math.random() * allIngredients["base"]["dry"].length)];
-        mainIngredients.push(dryIngredient["food"]);
-        if (dryIngredient["wet-measurement"]) {
-          mainIngredients.push(dryIngredient["wet-measurement"] + " " + allIngredients["base"]["wet"][Math.floor(Math.random() * allIngredients["base"]["wet"].length)]);
-        }
+        // 1: starch + protein
+        starch = allIngredients["base"]["starch"][Math.floor(Math.random() * allIngredients["base"]["starch"].length)];
+        mainIngredients.push(starch);
         mainIngredients.push(allIngredients["base"]["protein"][Math.floor(Math.random() * allIngredients["base"]["protein"].length)]);
         break;
-      case 3:
-        // 3: three proteins!
-        mainIngredients = randomSubset(allIngredients["base"]["protein"], 3);
-        break;
-      default:
-        // 4-5: two proteins
+      case 2:
+        // 2: two proteins
         mainIngredients = randomSubset(allIngredients["base"]["protein"], 2);
         break;
-    }
-
-    if (dryIngredient) {
-      instructions = dryIngredient["instructions"];
-      if (dryIngredient["extras"]) {
-        mainIngredients = mainIngredients.concat(dryIngredient["extras"]);
-      }
-    } else if (!dryIngredient) {
-      instructions = [
-        "Use a fork to mix ingredients together."
-      ]
     }
 
     // flavor palette:
@@ -101,7 +74,7 @@ function Recipe() {
     }
 
     // flavor ingredient combination:
-    switch (Math.ceil(Math.random() * 3)) {
+    switch (Math.ceil(Math.random() * 6)) {
       // 1: 1 sauce!
       case 1:
         toppings = randomSubset(flavorChoices["sauce"], 1);
