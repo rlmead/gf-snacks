@@ -115,8 +115,8 @@ function Recipe() {
 
   return (
     <div className="mb-5">
-      <Container className="text-dark pb-5 mt-5 mb-5">
-        <Row className="bg-info rounded shadow p-3 mb-5">
+      <Container className="text-black pb-5 mt-5 mb-5">
+        <Row className="bg-info rounded shadow p-3 mb-5" style={{opacity: 0.85}}>
           <Col sm="4">
             <h4>Ingredients</h4>
             <ul>
