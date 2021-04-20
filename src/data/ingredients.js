@@ -1,43 +1,10 @@
 const allIngredients = {
   "base": {
-    "dry": [
-      {
-        "food": "1/2 scoop of protein powder",
-        "instructions": [
-          "Use a fork or a very small, sturdy mini bar whisk to mix them all together."
-        ]
-      },
-      {
-        "food": "1/4 cup mochi flour",
-        "wet-measurement": "1/4 cup",
-        "instructions": [
-          "Stir together until smooth.",
-          "Cover the bowl and microwave at full strength for about 50 seconds. Microwaves differ, so you may need to adjust these times. You are looking for the microwave to transform the chalky looking raw mixture to a smooth, semi-translucent paste.",
-          "Use a potholder to remove the bowl from the microwave. Expect it to be HOT.",
-          "With a spoon or knife, slice through the paste both vertically and horizontally several times, as if cutting brownies after baking. This step simply makes eating the stretchy, chewy treat a bit easier."
-        ]
-      },
-      {
-        "food": "1/3 cup gluten-free flour blend",
-        "wet-measurement": "1/3 cup",
-        "extras": [
-          "1 tablespoon melted butter",
-          "1/2 teaspoon baking powder"
-        ],
-        "instructions": [
-          "Stir with a fork, spoon or mini bar whisk until the dough is completely and thoroughly mixed.",
-          "Put in the microwave and cover it.",
-          "Lower the power of your microwave by at least 20 percent.",
-          "Microwave for 45 seconds, and check it. If the top is still liquidy, microwave again (at lowered power) for 10 seconds at a time until the top is still moist and tender but no longer liquid.",
-          "Let it cool a bit!"
-        ]
-      }
-    ],
-    "wet": [
-      "cream",
-      "milk",
-      "nut milk",
-      "buttermilk"
+    "starch": [
+      "cooked rice",
+      "gluten-free cornbread",
+      "mashed sweet potatoes",
+      "popcorn"
     ],
     "protein": [
       "peanut butter",
@@ -109,7 +76,8 @@ const allIngredients = {
         "Nocino",
         "Frangelico",
         "Kahlua",
-        "Creme de cassis"
+        "Creme de cassis",
+        "heavy cream"
       ]
     }
   }
