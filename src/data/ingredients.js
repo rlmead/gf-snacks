@@ -4,7 +4,10 @@ const allIngredients = {
       "cooked rice",
       "gluten-free cornbread",
       "mashed sweet potatoes",
-      "popcorn"
+      "popcorn",
+      "oatmeal",
+      "fried plantains",
+      "diced cucumber"
     ],
     "protein": [
       "peanut butter",
@@ -13,7 +16,9 @@ const allIngredients = {
       "almond butter",
       "edamame",
       "toasted walnuts",
-      "toasted pecans"
+      "toasted pecans",
+      "hummus",
+      "cooked red beans"
     ]
   },
   "flavors": {
@@ -22,18 +27,18 @@ const allIngredients = {
         "flaky salt",
         "ground cayenne pepper",
         "freshly ground black pepper",
-        "red pepper flakes"
+        "red pepper flakes",
+        "sesame seeds"
       ],
       "sauce": [
         "toasted sesame oil",
         "coconut aminos",
         "liquid aminos",
         "hot sauce",
-        "gluten free hoisin sauce",
-        "gluten free teriyaki sauce",
-        "gluten free oyster sauce",
-        "worcestershire sauce",
-        "good chicken broth"
+        "gluten-free hoisin sauce",
+        "gluten-free teriyaki sauce",
+        "gluten-free oyster sauce",
+        "worcestershire sauce"
       ]
     },
     "sweet": {
@@ -42,12 +47,13 @@ const allIngredients = {
         "confectioner's sugar",
         "demerara sugar",
         "monk fruit powder",
-        "stevia concentrate or powder",
+        "stevia powder",
         "toasted coconut flakes",
         "unsweetened cocoa powder",
         "dark chocolate chips",
-        "dark chocolate squares",
-        "blueberries, fresh or frozen",
+        "candied ginger",
+        "blueberries",
+        "sliced bananas",
         "ground cinnamon",
         "ground allspice",
         "ground cloves",
@@ -65,7 +71,11 @@ const allIngredients = {
         "honey",
         "sweet sorghum syrup",
         "agave",
-        "jam, jelly or marmalade",
+        "strawberry jelly",
+        "grape jelly",
+        "raspberry jelly",
+        "rhubarb jam",
+        "orange marmalade",
         "icing",
         "Grand Marnier",
         "Cointreau",
