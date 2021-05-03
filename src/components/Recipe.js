@@ -118,7 +118,7 @@ function Recipe() {
       <Container className="text-black pb-5 mt-5 mb-5">
         <Row className="bg-info rounded shadow p-3 mb-5" style={{opacity: 0.85}}>
           <Col sm="4">
-            <h4>Ingredients</h4>
+            <h2>Ingredients</h2>
             <ul>
               {
                 mainDisplay.concat(topDisplay).map((item, index) => {
@@ -130,7 +130,7 @@ function Recipe() {
             </ul>
           </Col>
           <Col sm="8">
-            <h4>Instructions</h4>
+            <h2>Instructions</h2>
             <ol>
               <li>Combine {verbalizeArray(mainDisplay)} in a medium-sized bowl.</li>
               {
