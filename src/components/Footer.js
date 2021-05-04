@@ -8,7 +8,7 @@ function Footer() {
       <Nav
         className="mx-auto">
         <p className="mb-auto">
-          These recipes are only ok. <a className="text-light" href="https://books2read.com/u/mejzKV"><u>Get the good stuff here.</u></a>
+          These recipes are only ok. <a className="text-light" href="https://books2read.com/gluten-free-snacks"><u>Get the good stuff here.</u></a>
         </p>
       </Nav>
     </Navbar>
